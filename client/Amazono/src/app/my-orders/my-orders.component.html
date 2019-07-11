@@ -1,0 +1,37 @@
+<section id="myorders">
+  <div class="container p-5">
+    <app-message></app-message>
+    <div *ngIf="!orders" class="m-auto">
+      <h1 class="text-center display-3 mt-5">
+        <i class="fa fa-spinner fa-spin"></i>
+      </h1>
+    </div>
+    <h6 *ngIf="orders && !orders.length" class="row display-4">No Orders placed.</h6>
+    <div *ngIf="orders && orders.length" class="row">
+      <div class="col">
+        <h4 class="display-4">My Orders</h4>
+        <div class="row">
+          <div class="offset-9 col-2 d-none d-md-block">
+            <p>
+              <small class="text-muted">Date</small>
+            </p>
+          </div>
+        </div>
+        <hr class="mt-0">
+        <div *ngFor="let order of orders" class="order">
+          <div class="row">
+            
+            <div class="col-9"><a routerLink ="/orders/{{ order._id }}">{{ order.owner.name }}</a></div>
+            
+            <div class=" col-3">{{ order.Date | date}}</div>
+            
+          </div>
+          <hr>
+        </div>
+      </div>
+    </div>
+  </div>  
+</section>
+
+
+
